@@ -17,13 +17,12 @@
             document.getElementById('chatForm').onsubmit = function() {
                 var value = formInput.value;
                 socket.emit('chat message', value);
-                console.log(socket);
                 value = '';
                 return false;
             };
             socket.on('chat message', function(msg) {
-                console.log('kek');
-                messages.appendChild('<li>').textContent(msg);
+                var listItem = document.createElement('li');
+                messages.appendChild(listItem).innerHTML=(msg);
             });
         }
     };
