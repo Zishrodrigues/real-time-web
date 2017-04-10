@@ -5,10 +5,11 @@
 </head>
 <body class="container">
     <h1>Real time web</h1>
-
+    <ul id="messages"></ul>
+    <form action="" id="chatForm">
+        <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
     <script src="http://localhost:3007/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
