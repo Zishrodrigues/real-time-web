@@ -7,3 +7,28 @@
 body {
     font-family: sans-serif;
 }
+
+h1 {
+    width:100%;
+    border:1px red dashed;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.userForm {
+    border:1px orange dashed;
+    padding:1em;
+}
+
+.chatForm {
+    border: 1px green dashed;
+    padding:1em;
+}
+
+.messageList {
+    width: 100%;
+}
+
+.messageList li {
+    padding: 0.5em;
+}
