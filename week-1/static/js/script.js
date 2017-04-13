@@ -21,6 +21,9 @@
                 users.userName = [];
                 socket.emit('new user', username.value);
                 users.userName.push(username.value);
+                userForm.classList.add("hide");
+                document.getElementById('messages').classList.remove("hide");
+                document.getElementById('chatForm').classList.remove("hide");
             });
         }
     };
@@ -39,7 +42,6 @@
             socket.on('chat message', function(msg, username) {
                 var listItem = document.createElement('li');
                 messages.appendChild(listItem).innerHTML=(username + ' says: ' + msg);
-                console.log(username + ': ' + 'message: ' + msg + ' id: ' + socket.id);
             });
         }
     };
