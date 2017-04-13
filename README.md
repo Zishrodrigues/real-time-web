@@ -9,6 +9,10 @@ Zishan Rodrigues K. Pasha | V 1.0.0
 During the first week of Real-Time-Web I focused on getting to know the basics of Sockets.io and understanding it's inner workings.
 To accomplish this I created a simple chat app which demonstrated the foundations of using Sockets by creating an open channel between the client and client.
 
+### Features
+* Send and receive real-time chat messages
+* Use your own nickname
+
 ### Wishlist / to-do
 - [x] Create active Socket connection
 - [x] Add usernames
