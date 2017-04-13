@@ -40,3 +40,7 @@ Make sure port 3007 isn't being used by another project. If this is the case run
 $ npm run start
 ```
 If you get the message ```app listening in port 3007 ``` the server started successfully on localhost:3007.
+
+### License
+
+MIT | Copyright (c) 2017 Zish Rodrigues (zishrodrigues@gmail.com)
