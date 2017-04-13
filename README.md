@@ -2,7 +2,6 @@
 
 Zishan Rodrigues K. Pasha | V 1.0.0
 
-Live link:
 [Live link](https://real-time-web-week-1-rfpirlkpdd.now.sh/)
 
 ## Week 1: Sockets.io playground & testing
