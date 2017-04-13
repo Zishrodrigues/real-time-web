@@ -17,7 +17,7 @@ Using the following steps you can install and use the app locally.
 $ git clone https://github.com/Zishrodrigues/real-time-web.git
 ```
 #### Installing the required dependencies
-In the root folder of the project run the following command:
+Go into the folder week-1 and run the following command:
 ```
 $ npm install
 ```
