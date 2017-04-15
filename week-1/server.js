@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var request = require('request');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var users = [];
@@ -21,7 +22,13 @@ io.on('connection', function(socket){
     });
     socket.on('new user', function(user){
         io.emit('new user', user);
-        console.log(user + 'id: ' + socket.id);
+    });
+});
+
+io.on('connection', function(socket){
+    socket.on('new user', function(user){
+        var img = 'testimg';
+        io.emit('get image', img);
     });
 });
 

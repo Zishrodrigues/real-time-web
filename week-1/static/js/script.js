@@ -28,6 +28,15 @@
         }
     };
 
+    var images = {
+        getImage: function() {
+            socket.emit('get image');
+            socket.on('get image', function(img) {
+                console.log('testimg');
+            });
+        }
+    };
+
     var chat = {
         chatWorker: function() {
             var formInput = document.getElementById('m');
