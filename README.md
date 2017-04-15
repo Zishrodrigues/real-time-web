@@ -7,7 +7,7 @@ Zishan Rodrigues K. Pasha | V 1.0.0
 ## Week 1: Sockets.io playground & testing
 
 During the first week of Real-Time-Web I focused on getting to know the basics of Sockets.io and understanding it's inner workings.
-To accomplish this I created a simple chat app which demonstrated the foundations of using Sockets by creating an open channel between the client and client.
+To accomplish this I created a simple chat app which demonstrated the foundations of using Sockets by creating an open channel between the client and client. I used [the sockets.io chat tutorial](https://socket.io/get-started/chat/) as a guide for my project and in understanding how sockets.io work.
 
 ### Features
 * Send and receive real-time chat messages
@@ -44,6 +44,9 @@ Make sure port 3007 isn't being used by another project. If this is the case run
 $ npm run start
 ```
 If you get the message ```app listening in port 3007 ``` the server started successfully on localhost:3007.
+
+### Sources
+I used [the sockets.io chat tutorial](https://socket.io/get-started/chat/) as a guide for my project and in understanding how sockets.io work.
 
 ### License
 
