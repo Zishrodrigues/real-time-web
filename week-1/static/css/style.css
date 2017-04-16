@@ -43,6 +43,25 @@ h1 {
     margin:0;
 }
 
+.imageWrapper {
+    background-color: #111111;
+    overflow: hidden;
+    height: 30vh;
+    max-width: 70em;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.imageWrapper img {
+    width: auto;
+    height: 100%;
+}
+
+.imageWrapper .zoomed {
+    height: 350%;
+    width: auto;
+}
+
 .messageList {
     padding: 1em;
     list-style-type: none;
@@ -52,6 +71,8 @@ h1 {
     max-height: 80vh;
     overflow-y: scroll;
     word-wrap: break-word;
+    border:1px red dashed;
+    height: 35vh;
 }
 
 .chatForm {
