@@ -7,7 +7,11 @@
         elements: {
             userForm:  document.getElementById('userForm'),
             username: document.getElementById('username'),
-            kek: 'test'
+            startGame: document.getElementById('startGame'),
+            guessed: document.getElementById('guessed'),
+            messages: document.getElementById('messages'),
+            chatForm: document.getElementById('chatForm'),
+            mainImg: document.getElementById('mainImg')
         }
     };
 
@@ -15,8 +19,9 @@
         init: function() {
             console.log('App initiated :-)');
             chat.chatWorker();
+            chat.master();
             users.userForm();
-            images.getImage();
+            game.getImage();
         }
     };
 
@@ -31,10 +36,9 @@
                 socket.emit('new user', username.value);
                 users.userName.push(username.value);
                 userForm.classList.add("hide");
-                document.getElementById('messages').classList.remove("hide");
-                document.getElementById('chatForm').classList.remove("hide");
-                document.getElementById('mainImg').classList.remove("hide");
-                chat.master();
+                config.elements.messages.classList.remove("hide");
+                config.elements.chatForm.classList.remove("hide");
+                config.elements.mainImg.classList.remove("hide");
                 users.userNames();
             });
         },
@@ -58,14 +62,23 @@
         }
     };
 
-    var images = {
+    var game = {
         getImage: function() {
-            var imageNumber = Math.floor(Math.random() * 1050) + 1;
-            socket.emit('get image', imageNumber);
+            // var imageNumber = Math.floor(Math.random() * 1050) + 1;
+            // socket.emit('get image', imageNumber);
             socket.on('get image', function(img) {
                 console.log(img);
                 document.getElementById("image").src = img;
             });
+        },
+        startGame: function() {
+            // config.elements.startGame.addEventListener("click", function(){
+                var imageNumber = Math.floor(Math.random() * 1050) + 1;
+                socket.emit('get image', imageNumber);
+            // });
+        },
+        guessed: function() {
+            config.elements.startGame.classList.add('hide');
         }
     };
 
@@ -86,10 +99,18 @@
             });
         },
         master: function() {
-            socket.emit('set master', 'master');
+            // socket.emit('set master', 'master');
             socket.on('set master', function(master) {
                 console.log(master + ' ur king m8');
                 document.getElementById('image').classList.remove('zoomed');
+                config.elements.startGame.classList.remove('hide');
+                config.elements.startGame.addEventListener("click", function(){
+                    game.startGame();
+                    console.log('clicked start game');
+                });
+            });
+            socket.on('master announce', function(master) {
+                console.log(master + ' is master');
             });
         }
     };

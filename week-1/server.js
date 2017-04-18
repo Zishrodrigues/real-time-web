@@ -45,9 +45,11 @@ io.on('connection', function(socket){
 
     function setMaster() {
         var first = Object.keys(users)[0];
-        if(Object.keys(users).length > 0) {
-            users[first].emit('set master', first);
-        }
+        users[first].emit('set master', first);
+        io.emit('master announce', first);
+        // if(Object.keys(users).length > 0) {
+        //     console.log('WTf LOL');
+        // }
     }
 });
 
