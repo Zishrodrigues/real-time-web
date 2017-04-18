@@ -45,7 +45,9 @@ io.on('connection', function(socket){
 
     function setMaster() {
         var first = Object.keys(users)[0];
-        users[first].emit('set master', first);
+        if(Object.keys(users).length > 0) {
+            users[first].emit('set master', first);
+        }
     }
 });
 

@@ -3,6 +3,14 @@
 
     var socket = io();
 
+    var config = {
+        elements: {
+            userForm:  document.getElementById('userForm'),
+            username: document.getElementById('username'),
+            kek: 'test'
+        }
+    };
+
     var app = {
         init: function() {
             console.log('App initiated :-)');
@@ -15,8 +23,8 @@
     var users = {
         userName: ['Anonymous'],
         userForm: function() {
-            var userForm = document.getElementById('userForm');
-            var username = document.getElementById('username');
+            var userForm = config.elements.userForm;
+            var username = config.elements.username;
             userForm.addEventListener("submit", function(e){
                 e.preventDefault();
                 users.userName = [];
@@ -81,6 +89,7 @@
             socket.emit('set master', 'master');
             socket.on('set master', function(master) {
                 console.log(master + ' ur king m8');
+                document.getElementById('image').classList.remove('zoomed');
             });
         }
     };
