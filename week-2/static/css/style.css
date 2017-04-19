@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+h1 {
+    width:100%;
+    background-color: #111111;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.userForm {
+    background-color: #111111;
+    color: #ffffff;
+    margin: 1em;
+    padding:1em;
+    text-align: center;
+    max-width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.userForm label {
+    display: block;
+    margin: 1em;
+    font-size: 2em;
+}
+
+.userForm input {
+    padding: 1em;
+    width: 70%;
+}
+
+.userForm input[type=submit] {
+    width: 20%;
+    margin:0;
+}
+
+.guessedText {
+    background-color: green;
+    color: #ffffff;
+    padding:2em;
+    border-radius: 1em;
+    position: absolute;
+    display: none;
+}
+
+.guessedPopout {
+    display: inline-block;
+    right: -99em;
+    animation: guessedBlock 4s linear;
+}
+
+@keyframes guessedBlock {
+    0% {right: -99em;}
+    10% {right: 10em;}
+    90% {right: 10em;}
+    100% {right: -99em;}
+}
+
+.imageWrapper {
+    background-color: #111111;
+    background-image: url('/bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20em;
+    overflow: hidden;
+    height: 30vh;
+    max-width: 70em;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.imageWrapper img {
+    width: auto;
+    height: 100%;
+}
+
+.imageWrapper .zoomed {
+    height: 350%;
+    width: auto;
+}
+
+.messageList {
+    padding: 1em;
+    list-style-type: none;
+    max-width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 80vh;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border:1px #111111 solid;
+    height: 35vh;
+}
+
+.chatForm {
+    padding:1em;
+    text-align: center;
+    width: 100%;
+    max-width: 70em;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    bottom: 0;
+}
+
+.chatForm input {
+    width: 80%;
+    padding: 1em;
+    border: 0.1em #111111 solid;
+}
+
+.chatForm button {
+    width: 20%;
+    margin:0;
+}
+
+.messageList {
+    width: 100%;
+}
+
+.messageList li {
+    padding: 0.5em;
+}
+
+button {
+    background-color: #111111;
+    border: 0.1em #111111 solid;
+    color: #ffffff;
+    padding: 1em;
+    outline: none;
+    margin: 0 0.5em;
+}
+
+.hide {
+    display: none;
+}
