@@ -2,9 +2,12 @@
 
 Zishan Rodrigues K. Pasha | V 1.0.0
 
-[Live link](https://real-time-web-week-1-qtaejfdarn.now.sh/)
+## Week 2: External api
+
 
 ## Week 1: Sockets.io playground & testing
+
+[Live link](https://real-time-web-week-1-qtaejfdarn.now.sh/)
 
 During the first week of Real-Time-Web I focused on getting to know the basics of Sockets.io and understanding it's inner workings.
 To accomplish this I created a simple chat app which demonstrated the foundations of using Sockets by creating an open channel between the client and client. I used [the sockets.io chat tutorial](https://socket.io/get-started/chat/) as a guide for my project and in understanding how sockets.io work.
