@@ -4,30 +4,10 @@
     <% include ../partials/head %>
 </head>
 <body class="container">
-    <h1>Zish's Guess the image game</h1>
-    <form id='userForm' class="userForm">
-        <label>Please enter a nickname</label>
-        <input id='username' />
-        <input type='submit' class='btn btn-primary' value='Play!' />
-    </form>
-    <h5 id='onlineUsers'></h5>
-    <ul id="currentUsers"></ul>
-    <button id="startGame" class="hide">
-        Start game
-    </button>
-    <button id="guessed" class="hide">
-        Guessed!
-    </button>
-    <p id="guessedPopout" class="guessedText">
-        The image has been guessed!
-    </p>
-    <section id="mainImg" class="imageWrapper hide">
-        <img id="image" class="mainImage zoomed" src="" alt="Image">
-    </section>
-    <ul id="messages" class="messageList hide"></ul>
-    <form action="" id="chatForm" class="chatForm hide">
-        <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <h1>Zish's api</h1>
+
+    <ul id="tweets"></ul>
+
     <!-- <script src="http://localhost:3007/socket.io/socket.io.js"></script> -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="/js/script.js"></script>

@@ -1,9 +1,15 @@
 var express = require('express');
 var app = express();
 var request = require('request');
+require('dotenv').config();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var users = {};
+var Twitter = require('twitter');
+
+var consumerKey = process.env.CONSUMERKEY;
+var consumerSecret = process.env.CONSUMERSECRET;
+var accessToken = process.env.ACCESSTOKEN;
+var tokenSecret = process.env.ACCESSTOKENSECRET;
 
 app.use(express.static('static'));
 app.set('view engine', 'ejs');
@@ -11,50 +17,25 @@ app.set('views', 'views');
 
 app.get('/', function (req, res) {
     res.render('pages/index');
+    console.log(consumerKey);
 });
 
-io.on('connection', function(socket){
-    console.log(Object.keys(users));
-    socket.on('chat message', function(msg, username){
-        io.emit('chat message', msg, username);
+var client = new Twitter({
+    consumer_key: consumerKey,
+    consumer_secret: consumerSecret,
+    access_token_key: accessToken,
+    access_token_secret: tokenSecret
+});
+
+client.stream('statuses/filter', {track: 'table'},  function(stream) {
+    stream.on('data', function(tweet) {
+        console.log(tweet.text);
+         io.emit('new tweet', tweet);
     });
 
-    socket.on('new user', function(user){
-        socket.username = user;
-        // clients.push(socket.username);
-        users[socket.username] = socket;
-        io.emit('new user', user);
-        io.emit('usernames', Object.keys(users));
-        setMaster();
-        console.log(Object.keys(users));
+    stream.on('error', function(error) {
+        console.log(error);
     });
-
-    socket.on('get image', function(imageNumber){
-        var img = 'https://unsplash.it/800/500?image=' + imageNumber;
-        io.emit('get image', img);
-    });
-
-    socket.on('guessed', function(){
-        io.emit('guessed');
-    });
-
-    socket.on('disconnect', function(){
-        if (!socket.username) return;
-        delete users[socket.username];
-    //   clients.splice(clients.indexOf(socket.username), 1);
-        console.log(Object.keys(users));
-        io.emit('usernames', Object.keys(users));
-        setMaster();
-    });
-
-    function setMaster() {
-        var first = Object.keys(users)[0];
-        if(Object.keys(users).length > 0) {
-            console.log('WTf LOL');
-            users[first].emit('set master', first);
-            io.emit('master announce', first);
-        }
-    }
 });
 
 http.listen(3007, function(){
