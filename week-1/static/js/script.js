@@ -9,6 +9,7 @@
             username: document.getElementById('username'),
             startGame: document.getElementById('startGame'),
             guessed: document.getElementById('guessed'),
+            guessedPopout: document.getElementById('guessedPopout'),
             messages: document.getElementById('messages'),
             chatForm: document.getElementById('chatForm'),
             mainImg: document.getElementById('mainImg')
@@ -22,6 +23,7 @@
             chat.master();
             users.userForm();
             game.getImage();
+            game.guessedNext();
         }
     };
 
@@ -72,13 +74,30 @@
             });
         },
         startGame: function() {
-            // config.elements.startGame.addEventListener("click", function(){
-                var imageNumber = Math.floor(Math.random() * 1050) + 1;
-                socket.emit('get image', imageNumber);
-            // });
+            var imageNumber = Math.floor(Math.random() * 1050) + 1;
+            socket.emit('get image', imageNumber);
+            game.guessed();
         },
         guessed: function() {
             config.elements.startGame.classList.add('hide');
+            config.elements.guessed.classList.remove('hide');
+            config.elements.guessed.addEventListener("click", function(){
+                var imageNumber = Math.floor(Math.random() * 1050) + 1;
+                socket.emit('guessed'); //emit click..?
+                console.log('Been guessed!');
+            });
+        },
+        guessedNext: function() {
+            socket.on('guessed', function() {
+                console.log('keksd');
+                document.getElementById("image").src = '';
+                config.elements.guessedPopout.classList.add('guessedPopout');
+                setTimeout(function(){
+                    var imageNumber = Math.floor(Math.random() * 1050) + 1;
+                    socket.emit('get image', imageNumber);
+                    config.elements.guessedPopout.classList.remove('guessedPopout');
+                }, 4000);
+            });
         }
     };
 

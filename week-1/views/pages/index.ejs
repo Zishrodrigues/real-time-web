@@ -4,11 +4,11 @@
     <% include ../partials/head %>
 </head>
 <body class="container">
-    <h1>Zish's chat app</h1>
+    <h1>Zish's Guess the image game</h1>
     <form id='userForm' class="userForm">
         <label>Please enter a nickname</label>
         <input id='username' />
-        <input type='submit' class='btn btn-primary' value='Chat!' />
+        <input type='submit' class='btn btn-primary' value='Play!' />
     </form>
     <h5 id='onlineUsers'></h5>
     <ul id="currentUsers"></ul>
@@ -18,6 +18,9 @@
     <button id="guessed" class="hide">
         Guessed!
     </button>
+    <p id="guessedPopout" class="guessedText">
+        The image has been guessed!
+    </p>
     <section id="mainImg" class="imageWrapper hide">
         <img id="image" class="mainImage zoomed" src="" alt="Image">
     </section>

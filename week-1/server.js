@@ -34,6 +34,10 @@ io.on('connection', function(socket){
         io.emit('get image', img);
     });
 
+    socket.on('guessed', function(){
+        io.emit('guessed');
+    });
+
     socket.on('disconnect', function(){
         if (!socket.username) return;
         delete users[socket.username];
@@ -45,11 +49,11 @@ io.on('connection', function(socket){
 
     function setMaster() {
         var first = Object.keys(users)[0];
-        users[first].emit('set master', first);
-        io.emit('master announce', first);
-        // if(Object.keys(users).length > 0) {
-        //     console.log('WTf LOL');
-        // }
+        if(Object.keys(users).length > 0) {
+            console.log('WTf LOL');
+            users[first].emit('set master', first);
+            io.emit('master announce', first);
+        }
     }
 });
 

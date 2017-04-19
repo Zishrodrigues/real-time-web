@@ -6,6 +6,7 @@
 
 body {
     font-family: sans-serif;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -43,8 +44,34 @@ h1 {
     margin:0;
 }
 
+.guessedText {
+    background-color: green;
+    color: #ffffff;
+    padding:2em;
+    border-radius: 1em;
+    position: absolute;
+    display: none;
+}
+
+.guessedPopout {
+    display: inline-block;
+    right: -99em;
+    animation: guessedBlock 4s linear;
+}
+
+@keyframes guessedBlock {
+    0% {right: -99em;}
+    10% {right: 10em;}
+    90% {right: 10em;}
+    100% {right: -99em;}
+}
+
 .imageWrapper {
     background-color: #111111;
+    background-image: url('/bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20em;
     overflow: hidden;
     height: 30vh;
     max-width: 70em;
@@ -71,7 +98,7 @@ h1 {
     max-height: 80vh;
     overflow-y: scroll;
     word-wrap: break-word;
-    border:1px red dashed;
+    border:1px #111111 solid;
     height: 35vh;
 }
 
