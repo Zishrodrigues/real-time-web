@@ -31,7 +31,14 @@ io.on('connection', function(socket){
 
     socket.on('choose word', function(word){
         console.log(word[0]);
-        streamData(word[0]);
+        var startTime = new Date().getTime();
+        var timeOut = setTimeout(function(){
+            if(new Date().getTime() - startTime > 5000){
+                setTimeout(timeOut);
+                return;
+            }
+            streamData(word[0]);  //testing timeouts with streaming data - work in progress
+        }, 2000);
     });
 
     socket.on('disconnect', function(){
