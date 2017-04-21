@@ -2,10 +2,6 @@
 
 Zishan Rodrigues K. Pasha
 
-# Real Time Web
-
-Zishan Rodrigues K. Pasha | V 0.1
-
 ## Week 2: External api (Research for the Tweet game!)
 
 After developing a simple sockets.io based chat-game in which users had to guess the image I set out to get a deeper understanding of using external sources. Using the twitter public streaming Api I now have a continues stream of tweets based on user input, I also count the number of tweets.
