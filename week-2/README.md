@@ -1,26 +1,25 @@
 # Real Time Web
 
-Zishan Rodrigues K. Pasha | V 1.0.0
+Zishan Rodrigues K. Pasha | V 0.1
 
-[Live link](https://real-time-web-week-1-qtaejfdarn.now.sh/)
+## Week 2: External api (Research for the Tweet game!)
 
-## Week 2: Sockets.io playground & testing
+After developing a simple sockets.io based chat-game in which users had to guess the image I set out to get a deeper understanding of using external sources. Using the twitter public streaming Api I now have a continues stream of tweets based on user input, I also count the number of tweets.
 
-During the first week of Real-Time-Web I focused on getting to know the basics of Sockets.io and understanding it's inner workings.
-To accomplish this I created a simple chat app which demonstrated the foundations of using Sockets by creating an open channel between the client and client. I used [the sockets.io chat tutorial](https://socket.io/get-started/chat/) as a guide for my project and in understanding how sockets.io work.
+Using the knowledge i've gained this week i'm going to build a guessing game using the streaming api.
 
 ### Features
-* Send and receive real-time chat messages
-* Use your own nickname
+* Input a word to search live tweets
+* See number of tweets displayed
 
 ### Wishlist / to-do
-- [x] Create active Socket connection
-- [x] Add usernames
-- [x] Add Default username if none chosen
-- [ ] Add list of active users
-- [ ] Add unique colors per user
-- [ ] Add rooms
-- [ ] Add styling
+- [x] Use an external api
+- [x] Query based on input
+- [x] Count tweets
+- [ ] Stop the stream after a number of seconds
+- [ ] Add local storage for points
+- [ ] Add nick names
+- [ ] Add userlist
 
 ### Installing locally
 
@@ -32,7 +31,7 @@ Using the following steps you can install and use the app locally.
 $ git clone https://github.com/Zishrodrigues/real-time-web.git
 ```
 #### Installing the required dependencies
-Go into the folder week-1 and run the following command:
+Go into the folder week-2 and run the following command:
 ```
 $ npm install
 ```
@@ -44,9 +43,6 @@ Make sure port 3007 isn't being used by another project. If this is the case run
 $ npm run start
 ```
 If you get the message ```app listening in port 3007 ``` the server started successfully on localhost:3007.
-
-### Sources
-I used [the sockets.io chat tutorial](https://socket.io/get-started/chat/) as a guide for my project and in understanding how sockets.io work.
 
 ### License
 

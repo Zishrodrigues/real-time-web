@@ -17,7 +17,6 @@ app.set('views', 'views');
 
 app.get('/', function (req, res) {
     res.render('pages/index');
-    console.log(consumerKey);
 });
 
 var client = new Twitter({
@@ -27,16 +26,31 @@ var client = new Twitter({
     access_token_secret: tokenSecret
 });
 
-client.stream('statuses/filter', {track: 'table'},  function(stream) {
-    stream.on('data', function(tweet) {
-        console.log(tweet.text);
-         io.emit('new tweet', tweet);
+io.on('connection', function(socket){
+    console.log('Hey there!');
+
+    socket.on('choose word', function(word){
+        console.log(word[0]);
+        streamData(word[0]);
     });
 
-    stream.on('error', function(error) {
-        console.log(error);
+    socket.on('disconnect', function(){
+        console.log('Bi bi : <');
     });
 });
+
+function streamData(word) {
+    client.stream('statuses/filter', {track: word},  function(stream) {
+        stream.on('data', function(tweet) {
+            console.log(tweet.text);
+             io.emit('new tweet', tweet);
+        });
+
+        stream.on('error', function(error) {
+            console.log(error);
+        });
+    });
+}
 
 http.listen(3007, function(){
   console.log('listening on 3007');
