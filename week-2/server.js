@@ -30,30 +30,32 @@ io.on('connection', function(socket){
     console.log('Hey there!');
 
     socket.on('choose word', function(word){
+        console.log(word[0]);
         streamData(word[0]);
     });
 
     socket.on('disconnect', function(){
         console.log('Bi bi : <');
     });
+
+    function streamData(word) {
+        client.stream('statuses/filter', {track: word},  function(stream) {
+            stream.on('data', function(tweet) {
+                console.log(tweet);
+                socket.emit('new tweet', tweet);
+            });
+
+            stream.on('error', function(error) {
+                console.log(error);
+            });
+            setTimeout(function(){
+                console.log('stopped');
+                stream.destroy(); //stream disconnects after 10 seconds
+            },60000);
+        });
+    }
+
 });
-
-function streamData(word) {
-    client.stream('statuses/filter', {track: word},  function(stream) {
-        stream.on('data', function(tweet) {
-            console.log(tweet.text);
-             io.emit('new tweet', tweet);
-        });
-
-        stream.on('error', function(error) {
-            console.log(error);
-        });
-        setTimeout(function(){
-            console.log('stopped');
-            stream.destroy(); //stream disconnects after 10 seconds 
-        },10000);
-    });
-}
 
 http.listen(3007, function(){
   console.log('listening on 3007');

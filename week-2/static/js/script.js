@@ -27,6 +27,7 @@
         },
         dataReceiver: function() {
             socket.on('new tweet', function(data) {
+                console.log(data);
                 var tweetList = document.getElementById('tweets');
                 var listItem = document.createElement('li');
                 tweetList.appendChild(listItem).innerHTML=(data.text);
