@@ -17,7 +17,9 @@ Using the knowledge i've gained this week i'm going to build a guessing game usi
 - [x] Query based on input
 - [x] Count tweets
 - [x] Stop the stream after a number of seconds
-- [ ] Add local storage for points
+- [ ] Visually show counting of tweets
+- [ ] Create a logical flow
+- [ ] Add storage for points and highscores
 - [ ] Add nick names
 - [ ] Add userlist
 
