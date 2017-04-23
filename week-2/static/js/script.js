@@ -11,7 +11,6 @@
 
     var app = {
         init: function() {
-            data.dataReceiver();
             data.dataInput();
         }
     };
@@ -23,6 +22,7 @@
                 var chosenWord = [];
                 chosenWord.push(config.inputWord.value);
                 socket.emit('choose word', chosenWord);
+                data.dataReceiver();
             });
         },
         dataReceiver: function() {
