@@ -30,15 +30,7 @@ io.on('connection', function(socket){
     console.log('Hey there!');
 
     socket.on('choose word', function(word){
-        console.log(word[0]);
-        var startTime = new Date().getTime();
-        var timeOut = setTimeout(function(){
-            if(new Date().getTime() - startTime > 5000){
-                setTimeout(timeOut);
-                return;
-            }
-            streamData(word[0]);  //testing timeouts with streaming data - work in progress
-        }, 2000);
+        streamData(word[0]);
     });
 
     socket.on('disconnect', function(){
@@ -56,6 +48,10 @@ function streamData(word) {
         stream.on('error', function(error) {
             console.log(error);
         });
+        setTimeout(function(){
+            console.log('stopped');
+            stream.destroy(); //stream disconnects after 10 seconds 
+        },10000);
     });
 }
 
