@@ -16,7 +16,7 @@ Using the knowledge i've gained this week i'm going to build a guessing game usi
 - [x] Use an external api
 - [x] Query based on input
 - [x] Count tweets
-- [ ] Stop the stream after a number of seconds
+- [x] Stop the stream after a number of seconds
 - [ ] Add local storage for points
 - [ ] Add nick names
 - [ ] Add userlist
