@@ -10,6 +10,7 @@ var consumerKey = process.env.CONSUMERKEY;
 var consumerSecret = process.env.CONSUMERSECRET;
 var accessToken = process.env.ACCESSTOKEN;
 var tokenSecret = process.env.ACCESSTOKENSECRET;
+var users = {};
 
 app.use(express.static('static'));
 app.set('view engine', 'ejs');
@@ -29,6 +30,13 @@ var client = new Twitter({
 io.on('connection', function(socket){
     console.log('Hey there!');
 
+    socket.on('new user', function(name){
+        console.log(name);
+        socket.nickname = name;
+        users[socket.nickname] = socket;
+        io.emit('nicknames', Object.keys(users));
+    });
+
     socket.on('choose word', function(word){
         console.log(word[0]);
         streamData(word[0]);
@@ -36,6 +44,9 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         console.log('Bi bi : <');
+        if (!socket.nickname) return;
+        delete users[socket.nickname];
+        io.emit('nicknames', Object.keys(users));
     });
 
     function streamData(word) {

@@ -5,12 +5,18 @@
 </head>
 <body class="container">
     <h1>Zish's Game Tweet development</h1>
-    <form id="wordForm">
-        <input id="inputWord" type="text">
-        <input type='submit' value='Pick!' />
-    </form>
-    <p id="numberCount">0</p>
-    <ul id="tweets"></ul>
+
+    <section id="enterNickname" class="contentBlock">
+        <% include ../partials/enterNickname %>
+    </section>
+
+    <section id="dashboard" class="hide">
+        <% include ../partials/dashboard %>
+    </section>
+
+    <section id="inputWordWrapper" class="">
+        <% include ../partials/inputWord %>
+    </section>
 
     <!-- <script src="http://localhost:3007/socket.io/socket.io.js"></script> -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>

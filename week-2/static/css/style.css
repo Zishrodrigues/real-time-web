@@ -4,7 +4,31 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #1DA1F2;
+    font-family: sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
 p {
     font-size: 3em;
     color: blue;
+}
+
+.contentBlock {
+    background-color: #ffffff;
+    color: #1DA1F2;
+    margin:0 auto;
+    padding:1em;
+    width:90%;
+    max-width: 45em;
+}
+
+#enterNickname{
+
+}
+
+.hide {
+    display: none;
 }
