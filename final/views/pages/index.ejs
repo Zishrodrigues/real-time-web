@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+    <h1>Zish's Game Tweet development</h1>
+
+    <section id="enterNickname" class="contentBlock">
+        <% include ../partials/enterNickname %>
+    </section>
+
+    <section id="dashboard" class="hide">
+        <% include ../partials/dashboard %>
+    </section>
+
+    <section id="inputWordWrapper" class="hide">
+        <% include ../partials/inputWord %>
+    </section>
+
+    <!-- <script src="http://localhost:3007/socket.io/socket.io.js"></script> -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
