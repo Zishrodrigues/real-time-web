@@ -12,6 +12,7 @@
             username: document.getElementById('username'),
             userList: document.getElementById('currentUsers'),
             onlineUsers: document.getElementById('onlineUsers'),
+            playGame: document.getElementById('playButton'),
             numberCount: document.getElementById('numberCount'),
             wordForm: document.getElementById('wordForm'),
             inputWord: document.getElementById('inputWord')
@@ -35,6 +36,7 @@
                 users.nickName.push(config.elements.username.value);
                 config.elements.enterNickname.classList.add("hide");
                 users.nickNames();
+                game.playGame();
             });
         },
         nickNames: function() {
@@ -78,6 +80,12 @@
     };
 
     var game = {
+        playGame: function() {
+            config.elements.playGame.addEventListener("click", function(e){
+                config.elements.dashboard.classList.add('hide');
+                config.elements.inputWordWrapper.classList.remove('hide');
+            });
+        },
         tweetNumber: [],
         tweetCounter: function(tweets) {
             game.tweetNumber.push(tweets);

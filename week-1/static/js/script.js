@@ -7,7 +7,7 @@
         elements: {
             userForm:  document.getElementById('userForm'),
             username: document.getElementById('username'),
-            startGame: document.getElementById('startGame'),
+            startGame: document.getElementById('playButton'),
             guessed: document.getElementById('guessed'),
             guessedPopout: document.getElementById('guessedPopout'),
             messages: document.getElementById('messages'),
