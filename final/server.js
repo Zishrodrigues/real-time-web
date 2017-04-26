@@ -52,7 +52,7 @@ io.on('connection', function(socket){
     function streamData(word) {
         client.stream('statuses/filter', {track: word},  function(stream) {
             stream.on('data', function(tweet) {
-                console.log(tweet);
+                console.log(tweet.text);
                 socket.emit('new tweet', tweet);
             });
 
@@ -61,8 +61,9 @@ io.on('connection', function(socket){
             });
             setTimeout(function(){
                 console.log('stopped');
-                stream.destroy(); //stream disconnects after 10 seconds
-            },60000);
+                socket.emit('stream stopped');
+                stream.destroy();
+            },5000);
         });
     }
 

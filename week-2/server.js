@@ -61,7 +61,7 @@ io.on('connection', function(socket){
             });
             setTimeout(function(){
                 console.log('stopped');
-                stream.destroy(); //stream disconnects after 10 seconds
+                stream.destroy();
             },60000);
         });
     }
