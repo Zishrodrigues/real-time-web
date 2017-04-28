@@ -11,7 +11,7 @@
             randomNumber: document.getElementById('randomNumber'),
             inputWordWrapper: document.getElementById('inputWordWrapper'),
             countTweets: document.getElementById('countTweets'),
-            userForm:  document.getElementById('userForm'),
+            userForm: document.getElementById('userForm'),
             username: document.getElementById('username'),
             userList: document.getElementById('currentUsers'),
             onlineUsers: document.getElementById('onlineUsers'),
@@ -94,17 +94,20 @@
         setNumber: function() {
             var randomNumber = Math.floor((Math.random() * 500) + 10);
             config.elements.randomNumber.innerHTML = randomNumber;
+            game.results(randomNumber);
         },
         tweetNumber: [],
         tweetCounter: function(tweets) {
             game.tweetNumber.push(tweets);
             config.elements.numberCount.innerText=game.tweetNumber.length;
-            game.results();
         },
-        results: function() {
+        results: function(randomNumber) {
             socket.on('stream stopped', function() {
                 var tweetAmount = game.tweetNumber.length;
-                console.log(tweetAmount);
+                var numberDiv = randomNumber/100;
+                var result = tweetAmount/numberDiv;
+                console.log(Math.floor(result) + "%");
+                // [het te raden getal] : 100 = uitkomst. [het geraden getal] : uitkomst = percentage
             });
         }
     };

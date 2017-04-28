@@ -39,6 +39,15 @@ $ npm install
 ```
 Wait for the required npm packages to install and proceed further.
 
+#### Adding an .env file
+Add your own .env file in the root folder with the following keys and tokens from your own Twitter account:
+```
+CONSUMERKEY=YOURCONSUMERKEY
+CONSUMERSECRET=YOURCONSUMERSECRET
+ACCESSTOKEN=ACCESSTOKEN
+ACCESSTOKENSECRET=ACCESSTOKENSECRET
+```
+
 #### Starting and running the server
 Make sure port 3007 isn't being used by another project. If this is the case run the following command in the root of your project
 ```

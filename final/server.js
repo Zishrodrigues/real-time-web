@@ -61,7 +61,10 @@ io.on('connection', function(socket){
             });
             setTimeout(function(){
                 console.log('stopped');
-                socket.emit('stream stopped');
+                socket.emit('stream stopped', function() {
+                    console.log('emit testi');
+                });
+                console.log('test streamstop');
                 stream.destroy();
             },5000);
         });
