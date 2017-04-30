@@ -31,9 +31,17 @@ io.on('connection', function(socket){
     console.log('Hey there!');
 
     socket.on('new user', function(name){
-        console.log(name);
         socket.nickname = name;
         users[socket.nickname] = socket;
+        io.emit('nicknames', Object.keys(users));
+    });
+
+    socket.on('new score', function(score){
+        if (!socket.nickname) return;
+        delete users[socket.nickname];
+        socket.nickname = score;
+        users[socket.nickname] = score;
+        console.log( Object.keys(users));
         io.emit('nicknames', Object.keys(users));
     });
 

@@ -4,8 +4,11 @@
     var socket = io();
 
     var config = {
+        nickName: localStorage.getItem('nickname'),
+        highScore: localStorage.getItem('highscore'),
         elements: {
             enterNickname: document.getElementById('enterNickname'),
+            resetName: document.getElementById('resetNickname'),
             dashboard: document.getElementById('dashboard'),
             gameWrapper: document.getElementById('gameWrapper'),
             randomNumber: document.getElementById('randomNumber'),
@@ -18,18 +21,39 @@
             playGame: document.getElementById('playButton'),
             numberCount: document.getElementById('numberCount'),
             wordForm: document.getElementById('wordForm'),
-            inputWord: document.getElementById('inputWord')
+            inputWord: document.getElementById('inputWord'),
+            gameResults: document.getElementById('gameResults'),
+            resetGame: document.getElementById('reset')
         }
     };
 
     var app = {
         init: function() {
-            users.enterNickname();
+            users.checkNickname();
             data.dataInput();
+            console.log(config.highScore);
+            console.log(config.nickName);
         }
     };
 
     var users = {
+        checkNickname: function() {
+            if(localStorage.getItem('nickname')) {
+                users.nickNames();
+                socket.emit('new user', config.nickName + '(' + config.highScore + ')' + '%');
+                config.elements.enterNickname.classList.add("hide");
+                game.playGame();
+            } else {
+                users.enterNickname();
+            }
+        },
+        resetNickname: function() {
+            config.elements.resetName.addEventListener("click", function(e){
+                localStorage.removeItem("nickname");
+                localStorage.removeItem("highscore");
+                location.reload();
+            });
+        },
         nickName: [],
         enterNickname: function() {
             config.elements.userForm.addEventListener("submit", function(e){
@@ -37,12 +61,14 @@
                 users.nickName = [];
                 socket.emit('new user', config.elements.username.value);
                 users.nickName.push(config.elements.username.value);
+                localStorage.setItem('nickname', config.elements.username.value);
                 config.elements.enterNickname.classList.add("hide");
                 users.nickNames();
                 game.playGame();
             });
         },
         nickNames: function() {
+            users.resetNickname();
             config.elements.dashboard.classList.remove("hide");
             socket.on('nicknames', function(data) {
                 var html = '';
@@ -50,7 +76,7 @@
                 var amountList = document.createElement('ul');
                 var i;
                 for(i = 0; i < data.length; i++) {
-                    html += '<li class="list-group-item">'+data[i]+'</li>';
+                    html += '<li class="userListItem">'+data[i]+'</li>';
                     usersArr.push(data[i].length);
                     var amount = usersArr.length;
                     amountList.append(amount);
@@ -107,7 +133,20 @@
                 var numberDiv = randomNumber/100;
                 var result = tweetAmount/numberDiv;
                 console.log(Math.floor(result) + "%");
-                // [het te raden getal] : 100 = uitkomst. [het geraden getal] : uitkomst = percentage
+                localStorage.setItem('highscore', Math.floor(result));
+                config.elements.countTweets.classList.add('hide');
+                config.elements.gameResults.classList.remove('hide');
+                document.getElementById('resultsGuess').innerHTML=randomNumber;
+                document.getElementById('resultsAmount').innerHTML=tweetAmount;
+                document.getElementById('resultsScore').innerHTML=Math.floor(result) + "%";
+            });
+            console.log(localStorage.getItem('nickname'));
+            game.resetGame();
+        },
+        resetGame: function() {
+            config.elements.resetGame.addEventListener("click", function(e){
+                // localStorage.setItem('nickname', localStorage.getItem('nickname')+'(' + localStorage.getItem('highscore') + '%)');
+                location.reload();
             });
         }
     };
