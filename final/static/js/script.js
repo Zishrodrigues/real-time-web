@@ -40,7 +40,11 @@
         checkNickname: function() {
             if(localStorage.getItem('nickname')) {
                 users.nickNames();
-                socket.emit('new user', config.nickName + '(' + config.highScore + ')' + '%');
+                if(localStorage.getItem('highscore')) {
+                    socket.emit('new user', config.nickName + '(' + config.highScore + ')' + '%');
+                } else {
+                    socket.emit('new user', config.nickName);
+                }
                 config.elements.enterNickname.classList.add("hide");
                 game.playGame();
             } else {
