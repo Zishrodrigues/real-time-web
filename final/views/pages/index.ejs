@@ -4,7 +4,7 @@
     <% include ../partials/head %>
 </head>
 <body class="container">
-    <h1>Zish's Game Tweet development</h1>
+    <h1>Tweet game</h1>
 
     <section id="enterNickname" class="contentBlock">
         <% include ../partials/enterNickname %>
@@ -14,9 +14,11 @@
         <% include ../partials/dashboard %>
     </section>
 
-    <section id="gameWrapper" class="contentBlock hide">
+    <section id="gameWrapper" class="hide">
         <% include ../partials/game %>
     </section>
+
+    <svg id="tweetChart"></svg>
 
     <!-- <script src="http://localhost:3007/socket.io/socket.io.js"></script> -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>

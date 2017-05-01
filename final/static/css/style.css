@@ -9,6 +9,8 @@ body {
     font-family: sans-serif;
     color: #ffffff;
     text-align: center;
+    padding: 1em;
+    overflow: hidden;
 }
 
 p {
@@ -27,6 +29,183 @@ p {
 
 #enterNickname{
 
+}
+
+/* Dashboard */
+.dashboardWrapper {
+    margin: 1em auto;
+    max-width: 30em;
+}
+
+#currentUsers {
+    background-color: #ffffff;
+    max-width: 30em;
+    list-style-type: none;
+    padding: 1em;
+    margin: 1em auto;
+}
+
+#currentUsers li {
+    color: #1DA1F2;
+    font-size: 1.5em;
+}
+
+#resetNickname {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}
+
+/* GAME */
+#clockdiv {
+    background-color: #ffffff;
+    display: inline-block;
+    color: #1DA1F2;
+    padding:2em;
+}
+
+@media only screen and (min-width: 650px) {
+    #clockdiv {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (min-width: 910px) {
+    #clockdiv {
+        border-radius: 50%;
+    }
+}
+
+.clockWrapper {
+    color: #1DA1F2;
+}
+
+.seconds {
+    font-size: 2em;
+    display: block;
+}
+
+@media only screen and (min-width: 910px) {
+
+    #clockdiv {
+        position: absolute;
+        top:-20%;
+        left:-10%;
+        height: 150vh;
+        width: 40vw;
+    }
+
+    .clockWrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-30%, -50%);
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+    #clockdiv {
+        position: absolute;
+        top:-20%;
+        left:-10%;
+        height: 150vh;
+    }
+
+}
+
+#numberCount {
+    color: #ffffff;
+    font-size: 5em;
+    position: relative;
+}
+
+@media only screen and (min-width: 900px) {
+
+    #numberCount {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 8em;
+    }
+
+}
+
+#tweets {
+    border: 1px red dashed;
+    display: inline-block;
+    width:90%;
+    max-height: 10em;
+    overflow-x: hidden;
+    margin:0 auto;
+}
+
+#tweets li {
+    background-color: #ffffff;
+    color: #1DA1F2;
+    border-radius: 0.5em;
+    margin-top: 0.2em;
+}
+
+@media only screen and (min-width: 910px) {
+
+    #tweets {
+        border: 1px red dashed;
+        width:15em;
+        position: absolute;
+        right: 2em;
+    }
+
+}
+
+/* HELPERS */
+
+input[type="text"] {
+    padding: 0.5em;
+    color: #1DA1F2;
+    font-size: 1em;
+    font-weight: bold;
+    border: 0.2em #1DA1F2 solid;
+}
+
+input[type="submit"] {
+    background-color: #1DA1F2;
+    box-shadow: 7px 7px 6px 0px rgba(0,0,0,0.16);
+    border: 0.2em #1DA1F2 dashed;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    border: 0.2em #ffffff dashed;
+    transition: 0.3s;
+}
+
+button {
+    background-color: #ffffff;
+    box-shadow: 7px 7px 6px 0px rgba(0,0,0,0.16);
+    border: 0.2em #ffffff dashed;
+    color: #1DA1F2;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 1em;
+    margin: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover,
+button:focus {
+    border: 0.2em #1DA1F2 dashed;
+    transition: 0.3s;
 }
 
 .hide {

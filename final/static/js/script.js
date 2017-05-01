@@ -31,6 +31,7 @@
         init: function() {
             users.checkNickname();
             data.dataInput();
+            data.error();
             console.log(config.highScore);
             console.log(config.nickName);
         }
@@ -101,6 +102,7 @@
                 config.elements.countTweets.classList.remove('hide');
                 socket.emit('choose word', chosenWord);
                 data.dataReceiver();
+                game.timeCounter();
             });
         },
         dataReceiver: function() {
@@ -110,6 +112,9 @@
                 tweetList.appendChild(listItem).innerHTML=(data.text);
                 game.tweetCounter(data.text);
             });
+        },
+        error: function(error) {
+            console.log(error);
         }
     };
 
@@ -131,6 +136,36 @@
             game.tweetNumber.push(tweets);
             config.elements.numberCount.innerText=game.tweetNumber.length;
         },
+        timeCounter: function() {
+            function getTimeRemaining(endtime) {
+              var t = Date.parse(endtime) - Date.parse(new Date());
+              var seconds = Math.floor((t / 1000) % 60);
+              return {
+                'seconds': seconds
+              };
+            }
+
+            function initializeClock(id, endtime) {
+              var clock = document.getElementById(id);
+              var secondsSpan = clock.querySelector('.seconds');
+
+              function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                  clearInterval(timeinterval);
+                }
+              }
+
+              updateClock();
+              var timeinterval = setInterval(updateClock, 1000);
+            }
+
+            var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+            initializeClock('clockdiv', deadline);
+        },
         results: function(randomNumber) {
             socket.on('stream stopped', function() {
                 var tweetAmount = game.tweetNumber.length;
@@ -144,7 +179,6 @@
                 document.getElementById('resultsAmount').innerHTML=tweetAmount;
                 document.getElementById('resultsScore').innerHTML=Math.floor(result) + "%";
             });
-            console.log(localStorage.getItem('nickname'));
             game.resetGame();
         },
         resetGame: function() {

@@ -1,4 +1,4 @@
-<section id="inputWordWrapper">
+<section id="inputWordWrapper" class="contentBlock">
     <form id="wordForm">
         <h2>
             Choose a word that will be tweeted with <span id="randomNumber">50</span> times in one minute.
@@ -9,7 +9,13 @@
 </section>
 
 <section id="countTweets" class="hide">
-    <p id="numberCount">0</p>
+    <div id="clockdiv">
+        <div class="clockWrapper">
+            <span class="seconds"></span>
+            Seconds remaining
+        </div>
+    </div>
+    <p id="numberCount">60</p>
     <ul id="tweets"></ul>
 </section>
 
