@@ -8,6 +8,10 @@ Zishan Rodrigues K. Pasha | V 1.0.0
 ### project
 The goal of this project was to seamlessly implement sockets using an external api and node server. Using the Twitter public stream api I created a game that uses live tweets and user input.
 
+![tweetgame screenshot](https://raw.githubusercontent.com/zishrodrigues/real-time-web/screen1.jpg)
+
+![tweetgame screenshot](https://raw.githubusercontent.com/zishrodrigues/real-time-web/screen1.jpg)
+
 ### Process
 Creating this application required extensive research into the use of sockets.io and the Twitter api. Part of my research of creating a mini game with a chat where users could guess an image by seeing part of it. After getting a knack for the usage of sockets I started a new and added the twitter api. During development I had multiple testing sessions with users to get live feedback about the UX and general experience.
 
