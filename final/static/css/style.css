@@ -11,7 +11,7 @@ body {
     color: #ffffff;
     text-align: center;
     padding: 1em;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 p {
@@ -192,6 +192,29 @@ p {
 
 }
 
+#resultsPop {
+    background-color: #ffffff;
+    box-shadow: 7px 7px 6px 0px rgba(0,0,0,0.16);
+    color: #1DA1F2;
+    border-radius: 1em;
+    padding:1em;
+    position: absolute;
+    font-size: 1.5em;
+    left: -15em;
+    top: 1em;
+    display: none;
+}
+
+.letsPop {
+    display: inline-block !important;
+    animation: popup 3s linear;
+}
+
+#popupName,
+#popupScore {
+    font-weight: bold;
+}
+
 /* ANIMATIONS */
 
 @keyframes tweets {
@@ -205,6 +228,21 @@ p {
   100% {
     bottom: 150vh;
     opacity: 0.5;
+  }
+}
+
+@keyframes popup {
+  0% {
+    left: -15em;
+  }
+  20% {
+      left: 1em;
+  }
+  80% {
+      left: 1em;
+  }
+  100% {
+    left: -15em;
   }
 }
 

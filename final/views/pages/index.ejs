@@ -6,6 +6,7 @@
 <body class="container">
     <h1>Tweet game</h1>
 
+
     <section id="enterNickname" class="contentBlock">
         <% include ../partials/enterNickname %>
     </section>
@@ -17,6 +18,10 @@
     <section id="gameWrapper" class="hide">
         <% include ../partials/game %>
     </section>
+
+    <p id="resultsPop">
+        <span id="popupName"></span> just scored <span id="popupScore"></span>%!
+    </p>
 
     <section id="offline" class="hide">
         <% include ../partials/offline %>

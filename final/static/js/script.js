@@ -201,7 +201,7 @@
                     localStorage.setItem('highscore', score);
                     console.log('new highscore');
                 }
-                socket.emit('results popup', score);
+                socket.emit('results popup', score, localStorage.getItem('nickname'));
                 config.elements.countTweets.classList.add('hide');
                 config.elements.gameResults.classList.remove('hide');
                 document.getElementById('resultsGuess').innerHTML=randomNumber;
@@ -211,8 +211,14 @@
             game.resetGame();
         },
         resultsPopup: function() {
-            socket.on('results popup', function(result) {
-                console.log('popup' + result);
+            socket.on('results popup', function(result, name) {
+                console.log(result, name);
+                document.getElementById('popupName').innerHTML=name;
+                document.getElementById('popupScore').innerHTML=result;
+                document.getElementById('resultsPop').classList.add('letsPop');
+                setTimeout(function(){
+                    document.getElementById('resultsPop').classList.remove('letsPop');
+                },3000);
             });
         },
         resetGame: function() {

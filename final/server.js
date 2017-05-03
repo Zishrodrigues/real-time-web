@@ -50,8 +50,8 @@ io.on('connection', function(socket){
         streamData(word[0]);
     });
 
-    socket.on('results popup', function(result){
-        socket.broadcast.emit('results popup', result);
+    socket.on('results popup', function(result, name){
+        socket.broadcast.emit('results popup', result, name);
     });
 
     socket.on('disconnect', function(){
@@ -79,7 +79,7 @@ io.on('connection', function(socket){
                 });
                 console.log('test streamstop');
                 stream.destroy();
-            },60000);
+            },5000);
         });
     }
 
