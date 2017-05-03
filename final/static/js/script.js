@@ -22,8 +22,11 @@
             numberCount: document.getElementById('numberCount'),
             wordForm: document.getElementById('wordForm'),
             inputWord: document.getElementById('inputWord'),
+            guessedWord: document.getElementById('guessedWord'),
+            goal: document.getElementById('goal'),
             gameResults: document.getElementById('gameResults'),
-            resetGame: document.getElementById('reset')
+            resetGame: document.getElementById('reset'),
+            offlineButton: document.getElementById('offlineButton')
         }
     };
 
@@ -38,11 +41,15 @@
             console.log(config.nickName);
         },
         checkConnection: function() {
+            config.elements.offlineButton.addEventListener("click", function(e){
+                location.reload();
+            });
             setInterval(function(){
                 if (navigator.onLine) {
                   console.log('online');
                 } else {
                   console.log('offline');
+                  document.getElementById('offline').classList.remove('hide');
                 }
             }, 2000);
         }
@@ -112,11 +119,12 @@
                 config.elements.inputWordWrapper.classList.add('hide');
                 config.elements.countTweets.classList.remove('hide');
                 socket.emit('choose word', chosenWord);
+                game.chosenWord(chosenWord);
                 data.dataReceiver();
                 game.timeCounter();
             });
         },
-        dataReceiver: function() {
+        dataReceiver: function(chosenWord) {
             socket.on('new tweet', function(data) {
                 var tweetList = document.getElementById('tweets');
                 var listItem = document.createElement('li');
@@ -139,9 +147,13 @@
                 game.setNumber();
             });
         },
+        chosenWord: function(chosenWord) {
+            config.elements.guessedWord.innerHTML = chosenWord;
+        },
         setNumber: function() {
             var randomNumber = Math.floor((Math.random() * 500) + 10);
             config.elements.randomNumber.innerHTML = randomNumber;
+            config.elements.goal.innerHTML = randomNumber;
             game.results(randomNumber);
         },
         tweetNumber: [],

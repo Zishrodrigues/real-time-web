@@ -79,7 +79,7 @@ io.on('connection', function(socket){
                 });
                 console.log('test streamstop');
                 stream.destroy();
-            },5000);
+            },60000);
         });
     }
 

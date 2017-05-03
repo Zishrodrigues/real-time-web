@@ -58,6 +58,21 @@ p {
 }
 
 /* GAME */
+#chosenWord {
+    position: fixed;
+    color: #a2d8f9;
+    font-size: 2em;
+    bottom: 0.5em;
+    left:0;
+    right:0;
+}
+
+#guessedWord,
+#goal {
+    font-style: italic;
+    color: #ffffff;
+}
+
 #clockdiv {
     background-color: #ffffff;
     display: inline-block;
@@ -239,6 +254,23 @@ button:hover,
 button:focus {
     border: 0.2em #1DA1F2 dashed;
     transition: 0.3s;
+}
+
+#offline {
+    background: linear-gradient(to left, #1DA1F2, #56ccf2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 2em;
+    z-index: 999999;
+}
+
+#offline p {
+    color: #ffffff;
+    margin-top: 1em;
 }
 
 .hide {
