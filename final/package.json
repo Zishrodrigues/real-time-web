@@ -1,5 +1,5 @@
 {
-  "name": "real-time-web-week-1",
+  "name": "real-time-web-tweetgame",
   "version": "1.0.0",
   "description": "Base for the node / sockets app",
   "main": "server.js",

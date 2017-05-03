@@ -205,6 +205,20 @@ p {
     display: none;
 }
 
+#gameResults ul {
+    list-style-type: none;
+    max-width: 40em;
+    margin: 0 auto;
+}
+
+#gameResults ul li {
+    background-color: #ffffff;
+    padding: 1em;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    color: #1DA1F2;
+}
+
 .letsPop {
     display: inline-block !important;
     animation: popup 3s linear;
@@ -247,6 +261,25 @@ p {
 }
 
 /* HELPERS */
+
+.newHigh {
+    font-size: 2em;
+    background-color: red;
+    position: absolute;
+    color: #ffffff;
+    padding:1em;
+    transform: rotate(20deg);
+    top: 1em;
+    right:-1em;
+}
+
+h1 {
+    margin: 1em;
+}
+
+label {
+    font-size: 1.5em;
+}
 
 input[type="text"] {
     padding: 0.5em;
@@ -313,4 +346,13 @@ button:focus {
 
 .hide {
     display: none;
+}
+
+#confetti{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }

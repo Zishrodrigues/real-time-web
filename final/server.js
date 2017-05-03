@@ -41,12 +41,14 @@ io.on('connection', function(socket){
         delete users[socket.nickname];
         socket.nickname = score;
         users[socket.nickname] = score;
-        console.log( Object.keys(users));
         io.emit('nicknames', Object.keys(users));
     });
 
+    socket.on('new highscore', function(){
+        socket.emit('new highscore');
+    });
+
     socket.on('choose word', function(word){
-        console.log(word[0]);
         streamData(word[0]);
     });
 
@@ -75,11 +77,9 @@ io.on('connection', function(socket){
 
             setTimeout(function(){
                 socket.emit('stream stopped', function() {
-                    console.log('emit testi');
                 });
-                console.log('test streamstop');
                 stream.destroy();
-            },5000);
+            },60000);
         });
     }
 

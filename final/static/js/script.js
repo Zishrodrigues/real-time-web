@@ -37,8 +37,6 @@
             game.resultsPopup();
             data.dataInput();
             data.error();
-            console.log(config.highScore);
-            console.log(config.nickName);
         },
         checkConnection: function() {
             config.elements.offlineButton.addEventListener("click", function(e){
@@ -46,9 +44,8 @@
             });
             setInterval(function(){
                 if (navigator.onLine) {
-                  console.log('online');
+                  document.getElementById('offline').classList.remove('add');
                 } else {
-                  console.log('offline');
                   document.getElementById('offline').classList.remove('hide');
                 }
             }, 2000);
@@ -199,7 +196,7 @@
                 var score = Math.floor(result);
                 if(Math.abs(score - 100) < Math.abs(localStorage.getItem('highscore') - 100)) {
                     localStorage.setItem('highscore', score);
-                    console.log('new highscore');
+                    socket.emit('new highscore');
                 }
                 socket.emit('results popup', score, localStorage.getItem('nickname'));
                 config.elements.countTweets.classList.add('hide');
@@ -212,7 +209,6 @@
         },
         resultsPopup: function() {
             socket.on('results popup', function(result, name) {
-                console.log(result, name);
                 document.getElementById('popupName').innerHTML=name;
                 document.getElementById('popupScore').innerHTML=result;
                 document.getElementById('resultsPop').classList.add('letsPop');
