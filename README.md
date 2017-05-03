@@ -73,6 +73,9 @@ If you get the message ```app listening in port 3007 ``` the server started succ
 * twitter (for setting up the twitter stream)
 * Now (for deployent)
 
+### Sources
+* confetti animation by Hemn Chawroka
+
 ### License
 
 MIT | Copyright (c) 2017 Zish Rodrigues (zishrodrigues@gmail.com)
