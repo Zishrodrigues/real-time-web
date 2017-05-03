@@ -5,12 +5,13 @@
 }
 
 body {
-    background-color: #1DA1F2;
+    /*background-color: #1DA1F2;*/
+    background: linear-gradient(to left, #1DA1F2, #56ccf2);
     font-family: sans-serif;
     color: #ffffff;
     text-align: center;
     padding: 1em;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 p {
@@ -134,30 +135,62 @@ p {
 }
 
 #tweets {
-    border: 1px red dashed;
     display: inline-block;
     width:90%;
     max-height: 10em;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     margin:0 auto;
-}
-
-#tweets li {
-    background-color: #ffffff;
-    color: #1DA1F2;
-    border-radius: 0.5em;
-    margin-top: 0.2em;
 }
 
 @media only screen and (min-width: 910px) {
 
     #tweets {
-        border: 1px red dashed;
-        width:15em;
         position: absolute;
-        right: 2em;
+        border:3px red dashed;
+        width:1em;
+        bottom:0;
+        right:0;
     }
 
+}
+
+#tweets li {
+    background-color: #ffffff;
+    padding:0.5em;
+    color: #1DA1F2;
+    border-radius: 0.5em;
+    margin-top: 0.2em;
+    z-index: 99999;
+}
+
+@media only screen and (min-width: 910px) {
+
+    #tweets li {
+        position: absolute;
+        display: inline-block;
+        width: 20em;
+        left:-25em;
+        bottom: -10em;
+        animation: tweets 5s linear;
+        opacity: 0.5;
+    }
+
+}
+
+/* ANIMATIONS */
+
+@keyframes tweets {
+  0% {
+    bottom: -10em;
+    opacity: 0.5;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+    bottom: 150vh;
+    opacity: 0.5;
+  }
 }
 
 /* HELPERS */

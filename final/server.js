@@ -50,6 +50,10 @@ io.on('connection', function(socket){
         streamData(word[0]);
     });
 
+    socket.on('results popup', function(result){
+        socket.broadcast.emit('results popup', result);
+    });
+
     socket.on('disconnect', function(){
         console.log('Bi bi : <');
         if (!socket.nickname) return;
@@ -70,13 +74,12 @@ io.on('connection', function(socket){
             });
 
             setTimeout(function(){
-                console.log('stopped');
                 socket.emit('stream stopped', function() {
                     console.log('emit testi');
                 });
                 console.log('test streamstop');
                 stream.destroy();
-            },60000);
+            },5000);
         });
     }
 

@@ -29,11 +29,22 @@
 
     var app = {
         init: function() {
+            app.checkConnection();
             users.checkNickname();
+            game.resultsPopup();
             data.dataInput();
             data.error();
             console.log(config.highScore);
             console.log(config.nickName);
+        },
+        checkConnection: function() {
+            setInterval(function(){
+                if (navigator.onLine) {
+                  console.log('online');
+                } else {
+                  console.log('offline');
+                }
+            }, 2000);
         }
     };
 
@@ -114,7 +125,9 @@
             });
         },
         error: function(error) {
-            console.log(error);
+            socket.on('stream error', function(error) {
+                console.log(error);
+            });
         }
     };
 
@@ -171,8 +184,12 @@
                 var tweetAmount = game.tweetNumber.length;
                 var numberDiv = randomNumber/100;
                 var result = tweetAmount/numberDiv;
-                console.log(Math.floor(result) + "%");
-                localStorage.setItem('highscore', Math.floor(result));
+                var score = Math.floor(result);
+                if(Math.abs(score - 100) < Math.abs(localStorage.getItem('highscore') - 100)) {
+                    localStorage.setItem('highscore', score);
+                    console.log('new highscore');
+                }
+                socket.emit('results popup', score);
                 config.elements.countTweets.classList.add('hide');
                 config.elements.gameResults.classList.remove('hide');
                 document.getElementById('resultsGuess').innerHTML=randomNumber;
@@ -180,6 +197,11 @@
                 document.getElementById('resultsScore').innerHTML=Math.floor(result) + "%";
             });
             game.resetGame();
+        },
+        resultsPopup: function() {
+            socket.on('results popup', function(result) {
+                console.log('popup' + result);
+            });
         },
         resetGame: function() {
             config.elements.resetGame.addEventListener("click", function(e){
