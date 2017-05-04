@@ -152,19 +152,19 @@ p {
 #tweets {
     display: inline-block;
     width:90%;
-    max-height: 10em;
-    /*overflow-x: hidden;*/
+    max-height: 7em;
     margin:0 auto;
+    opacity: 0;
 }
 
 @media only screen and (min-width: 910px) {
 
     #tweets {
         position: absolute;
-        border:3px red dashed;
         width:1em;
         bottom:0;
         right:0;
+        opacity: 1;
     }
 
 }
