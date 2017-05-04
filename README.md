@@ -5,7 +5,7 @@ Zishan Rodrigues K. Pasha
 ## Real Time Web: Final (tweet game)
 
 V 1.0.0
-[Live link](https://real-time-web-tweetgame-lhajsutdtr.now.sh)
+[Live link](https://real-time-web-tweetgame-mkglpbviax.now.sh)
 
 ### project
 The goal of this project was to seamlessly implement sockets using an external api and node server. Using the Twitter public stream api I created a game that uses live tweets and user input.
