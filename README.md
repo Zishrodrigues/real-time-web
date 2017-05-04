@@ -12,7 +12,7 @@ The goal of this project was to seamlessly implement sockets using an external a
 
 ![tweetgame screenshot](https://raw.githubusercontent.com/zishrodrigues/real-time-web/master/screenshots/screen1.jpg)
 
-![tweetgame screenshot](https://raw.githubusercontent.com/zishrodrigues/real-time-web/master/screenshots/screen1.jpg)
+![tweetgame screenshot](https://raw.githubusercontent.com/zishrodrigues/real-time-web/master/screenshots/screen2.jpg)
 
 ### Process
 Creating this application required extensive research into the use of sockets.io and the Twitter api. Part of my research of creating a mini game with a chat where users could guess an image by seeing part of it. After getting a knack for the usage of sockets I started a new and added the twitter api. During development I had multiple testing sessions with users to get live feedback about the UX and general experience.
