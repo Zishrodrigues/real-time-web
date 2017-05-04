@@ -1,7 +1,7 @@
 # Tweet game
 
 Zishan Rodrigues K. Pasha | V 1.0.0
-[Live link](https://real-time-web-tweetgame-mskpmirabf.now.sh/)
+[Live link](https://real-time-web-tweetgame-lhajsutdtr.now.sh)
 
 ## Real Time Web: Final (tweet game)
 

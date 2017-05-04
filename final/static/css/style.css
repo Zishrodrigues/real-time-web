@@ -327,7 +327,8 @@ button:focus {
     transition: 0.3s;
 }
 
-#offline {
+#offline,
+#error {
     background: linear-gradient(to left, #1DA1F2, #56ccf2);
     position: absolute;
     top: 0;
@@ -339,7 +340,8 @@ button:focus {
     z-index: 999999;
 }
 
-#offline p {
+#offline p,
+#error p {
     color: #ffffff;
     margin-top: 1em;
 }

@@ -26,7 +26,8 @@
             goal: document.getElementById('goal'),
             gameResults: document.getElementById('gameResults'),
             resetGame: document.getElementById('reset'),
-            offlineButton: document.getElementById('offlineButton')
+            offlineButton: document.getElementById('offlineButton'),
+            errorButton: document.getElementById('errorButton')
         }
     };
 
@@ -130,8 +131,12 @@
             });
         },
         error: function(error) {
+            config.elements.errorButton.addEventListener("click", function(e){
+                location.reload();
+            });
             socket.on('stream error', function(error) {
                 console.log(error);
+                document.getElementById('error').classList.remove('hide');
             });
         }
     };
